@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tic-Tac-Toe</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="a.js"></script>
+</head>
+<body>
+    <h1>Tic-Tac-Toe</h1>
+    <div class="choice">
+        <h3>Start as</h3>
+        <input type="radio" name="Start" id="x" value="x">
+        <label for="x">x</label>
+        <input type="radio" name="Start" id="o" value="o">
+        <label for="o">o</label>
+        <br>
+        <br>
+        <button class="btn" onclick="start()"> Start </button>
+    </div>
+   <br>
+   <br>
+    <div class="board" id="board">
+        <input type="text" id="c1" onclick="fb1(); func()" readonly>
+        <input type="text" id="c2" onclick="fb2(); func();" readonly>
+        <input type="text" id="c3" onclick="fb3(); func();" readonly>
+        <br>
+        <br>
+        <input type="text" id="c4" onclick="fb4(); func();" readonly>
+        <input type="text" id="c5" onclick="fb5(); func();" readonly>
+        <input type="text" id="c6" onclick="fb6(); func();" readonly>
+        <br>
+        <br>
+        <input type="text" id="c7" onclick="fb7(); func();" readonly>
+        <input type="text" id="c8" onclick="fb8(); func();" readonly>
+        <input type="text" id="c9" onclick="fb9(); func();" readonly>
+        <br>
+        <br>
+        <button class="btn" onclick="reset()"> Reset </button>
+        <p id="print"></p>
+    </div>
+
+</body>
+</html>
