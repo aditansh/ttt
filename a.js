@@ -1,5 +1,5 @@
 function func(){
-    var c1,c2,c3,c4,c5,c6,c7,c8,c9;
+    var c1,c2,c3,c4,c5,c6,c7,c8,c9,win;
     c1=document.getElementById("c1").value;
     c2=document.getElementById("c2").value;
     c3=document.getElementById("c3").value;
@@ -11,7 +11,7 @@ function func(){
     c9=document.getElementById("c9").value;
 
     if ((c1=="x" && c2=="x" && c3=="x") || (c4=="x" && c5=="x" && c6=="x") || (c7=="x" && c8=="x" && c9=="x") || (c1=="x" && c4=="x" && c7=="x") || (c2=="x" && c5=="x" && c8=="x") || (c3=="x" && c6=="x" && c9=="x") || (c1=="x" && c5=="x" && c9=="x")||(c3=="x" && c5=="x" && c7=="x")){
-        resultx()
+        win="x"; result(win);  
         document.getElementById("c1").disabled=true;
         document.getElementById("c2").disabled=true;
         document.getElementById("c3").disabled=true;
@@ -22,8 +22,8 @@ function func(){
         document.getElementById("c8").disabled=true;
         document.getElementById("c9").disabled=true;
     }
-    else if((c1=="o" && c2=="o" && c3=="o") || (c4=="o" && c5=="o" && c6=="o") || (c7=="o" && c8=="o" && c9=="o") || (c1=="o" && c4=="o" && c7=="o") || (c2=="o" && c5=="o" && c8=="o") || (c3=="o" && c6=="o" && c9=="o") || (c1=="o" && c5=="o" && c9=="o")||(c3=="o" && c5=="o" && c7=="o")){
-        resulto()
+    else if ((c1=="o" && c2=="o" && c3=="o") || (c4=="o" && c5=="o" && c6=="o") || (c7=="o" && c8=="o" && c9=="o") || (c1=="o" && c4=="o" && c7=="o") || (c2=="o" && c5=="o" && c8=="o") || (c3=="o" && c6=="o" && c9=="o") || (c1=="o" && c5=="o" && c9=="o")||(c3=="o" && c5=="o" && c7=="o")){
+        win="o"; result(win);
         document.getElementById("c1").disabled=true;
         document.getElementById("c2").disabled=true;
         document.getElementById("c3").disabled=true;
@@ -33,19 +33,50 @@ function func(){
         document.getElementById("c7").disabled=true;
         document.getElementById("c8").disabled=true;
         document.getElementById("c9").disabled=true;
-    }  
+    }
+    else if ((c1=="x" || c1=="o") && (c2=="x" || c2=="o") && (c3=="x" || c3=="o") && (c4=="x" || c4=="o") && (c5=="x" || c5=="o") && (c6=="x" || c6=="o") && (c7=="x" || c7=="o")  && (c8=="x" || c8=="o") && (c9=="x" || c9=="o")){
+        win="d"; result(win);
+    }     
+}
+
+function ready(){
+    window.player1=document.getElementById("player1").value;
+    window.player2=document.getElementById("player2").value;
+    if ((player1=='') || (player2=='')){
+        window.alert("Please enter player names!");
+        location.reload();
+    }
+    else{
+        document.getElementById("intro").style.display="none";
+        document.getElementById("p1-name").innerHTML=player1;
+        document.getElementById("p2-name").innerHTML=player2;
+        document.getElementById("choice").style.display="block";
+        document.getElementById("board").style.display="block";
+    } 
 }
 
 function start(){
-    if (document.getElementById("o").checked==true){
-        flag=0;
+    flag=1;
+    if (document.getElementById("p2").checked==true){
+        window.p=2;
     }
     else {
-        flag=1;
+        window.p=1;
     }
-    document.getElementById("x").disabled=true
-    document.getElementById("o").disabled=true
+    document.getElementById("p1").disabled=true;
+    document.getElementById("p2").disabled=true;
+    document.getElementById("c1").disabled=false;
+    document.getElementById("c2").disabled=false;
+    document.getElementById("c3").disabled=false;
+    document.getElementById("c4").disabled=false;
+    document.getElementById("c5").disabled=false;
+    document.getElementById("c6").disabled=false;
+    document.getElementById("c7").disabled=false;
+    document.getElementById("c8").disabled=false;
+    document.getElementById("c9").disabled=false;    
 }
+
+flag=1;
 
 function fb1(){
     if (flag==1){
@@ -164,14 +195,28 @@ function fb9(){
     }
 }
 
-function resultx(){
-    document.getElementById("print").innerHTML="x wins";
+function result(win){
+    if (p=="1"){
+        if (win=="x"){
+            document.getElementById("print").innerHTML=player1 + " wins";
+        }
+        else{
+            document.getElementById("print").innerHTML=player2 + " wins";
+        }
+    }
+    else if (p=="2"){
+        if (win=="x"){
+            document.getElementById("print").innerHTML=player2 + " wins";
+        }
+        else{
+            document.getElementById("print").innerHTML=player1 + " wins";
+        }
+    }
+    else if (win=="d"){
+        document.getElementById("print").innerHTML="it's a draw";
+    }
 }
 
-function resulto(){
-    document.getElementById("print").innerHTML="o wins";
-}
-
-function reset(){
+function reset(){   
     location.reload()
 }
