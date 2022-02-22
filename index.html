@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tic-Tac-Toe</title>
     <link rel="stylesheet" href="styles.css">
-    <script src="a.js"></script>
+    <script src="app.js"></script>
 </head>
 <body>
     <h1>Tic-Tac-Toe</h1>
@@ -23,9 +23,9 @@
     <div class="choice" id="choice">
         <h3>Who's starting?</h3>
         <input type="radio" name="Start" id="p1" value="p1">
-        <label for="x" id="p1-name"></label>
+        <label for="p1" id="p1-name"></label>
         <input type="radio" name="Start" id="p2" value="p2">
-        <label for="o" id="p2-name"></label>
+        <label for="p2" id="p2-name"></label>
         <br>
         <br>
         <button class="btn" onclick="start()"> Start </button>
@@ -47,9 +47,28 @@
         <input type="text" id="c8" onclick="fb8(); func();" readonly disabled>
         <input type="text" id="c9" onclick="fb9(); func();" readonly disabled>
         <br>
-        <br>
-        <button class="btn" onclick="reset()"> Reset </button>
         <p id="print"></p>
+        <button class="btn" id="viewScore" onclick="viewScore()"> View Score </button>
+        <button class="btn" id="reset" onclick="reset()"> Reset </button>
+    </div>
+    <div class="scorecard" id="score">
+        <table>
+            <caption><h2>Leaderboard</h2></caption>
+            <tr>
+                <td id="name1"></td>
+                <td id="score1"></td>
+            </tr>
+            <tr>
+                <td id="name2"></td>
+                <td id="score2"></td>
+            </tr>
+        </table>
+        <br>
+        <br>
+        <button class="btn" id="newGame" onclick="newGame()"> New Game </button>
+        <br>
+        <br>
+        <button class="btn" id="end" onclick="end()"> End </button>
     </div>
 
 </body>
